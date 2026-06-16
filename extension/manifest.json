@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "Behelith",
+  "version": "1.1.0",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "description": "Replaces Codeforces textareas with Monaco Editor, adding offline formatting, a draggable HUD, and local compilation.",
+  "permissions": [
+    "nativeMessaging",
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://codeforces.com/contest/*/problem/*",
+        "*://*.codeforces.com/contest/*/problem/*",
+        "*://codeforces.com/problemset/problem/*",
+        "*://*.codeforces.com/problemset/problem/*",
+        "*://codeforces.com/gym/*/problem/*",
+        "*://*.codeforces.com/gym/*/problem/*",
+        "*://codeforces.com/group/*/contest/*/problem/*",
+        "*://*.codeforces.com/group/*/contest/*/problem/*",
+        "*://codeforces.com/contest/*/submit*",
+        "*://*.codeforces.com/contest/*/submit*",
+        "*://codeforces.com/problemset/submit*",
+        "*://*.codeforces.com/problemset/submit*",
+        "*://codeforces.com/gym/*/submit*",
+        "*://*.codeforces.com/gym/*/submit*",
+        "*://codeforces.com/group/*/contest/*/submit*",
+        "*://*.codeforces.com/group/*/contest/*/submit*"
+      ],
+      "js": [
+        "content/cf_injector.js"
+      ],
+      "css": [
+        "content/hud.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "sandbox/editor.html",
+        "sandbox/clang-format.wasm",
+        "sandbox/ruff.wasm",
+        "assets/*",
+        "content/hud.css"
+      ],
+      "matches": [
+        "*://codeforces.com/*",
+        "*://*.codeforces.com/*"
+      ]
+    }
+  ]
+}

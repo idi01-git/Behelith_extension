@@ -1,0 +1,9 @@
+{
+  "name": "com.behelith.compiler",
+  "description": "Chrome Native Messaging host for Behelith C++ compiler",
+  "path": "NATIVE_DAEMON_PATH",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://YOUR_EXTENSION_ID/"
+  ]
+}

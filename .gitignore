@@ -1,0 +1,26 @@
+# Ignore node_modules and builds
+extension/node_modules/
+extension/dist/
+
+# Ignore Python caches
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Ignore local daemon temporary build files (if any)
+local_daemon/solution.exe
+local_daemon/solution.cpp
+local_daemon/solution.py
+local_daemon/solution
+
+# Ignore system & IDE files
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.log
